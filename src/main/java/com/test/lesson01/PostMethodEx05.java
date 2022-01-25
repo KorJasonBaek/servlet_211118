@@ -22,13 +22,15 @@ public class PostMethodEx05 extends HttpServlet{
 		String email = request.getParameter("email");
 		
 		PrintWriter out = response.getWriter();
-		out.print("<html><head><title>회원 정보</title></head><body>");
+		out.print("<html><head><title>�쉶�썝 �젙蹂�</title></head><body>");
 		out.print("<table border=1>");
-		out.print("<tr><th>아이디</th><td>" + userId + "</td></tr>");
-		out.print("<tr><th>이름</th><td>" + name + "</td></tr>");
-		out.print("<tr><th>생년월일</th><td>" + birth + "</td></tr>");
-		out.print("<tr><th>이메일</th><td>" + email + "</td></tr>");
+		out.print("<tr><th>�븘�씠�뵒</th><td>" + userId + "</td></tr>");
+		out.print("<tr><th>�씠由�</th><td>" + name + "</td></tr>");
+		out.print("<tr><th>�깮�뀈�썡�씪</th><td>" + birth + "</td></tr>");
+		out.print("<tr><th>�씠硫붿씪</th><td>" + email + "</td></tr>");
 		out.print("</table></body></html>");
+		
+		// 주석 테스트
 		
 	}
 
