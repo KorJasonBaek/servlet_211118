@@ -1,0 +1,19 @@
+GET / POST
+
+GET
+ - 브라우저에서 주소를 치고 들어갈 수 있다
+ - a href 주소 링크
+ - query string  (request body에 내용이 없다)
+ - form method=get
+
+POST (대량의 정보를 보낼 때 ex)회원가입)
+ - form method=post
+ - request body에 내용이 담김
+
+github.com 가입하기!
+
+CTRL + SHIFT + R : 파일 찾기(Open Resource)
+
+- 과제:quiz8 검색 글자 진하게, quiz9
+- github 가입
+- 1/29 ~ 2/6 설연휴 + 2/3, 2/4

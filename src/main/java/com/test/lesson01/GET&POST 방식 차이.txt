@@ -1,0 +1,17 @@
+http://localhost/hello
+
+HTTP METHOD뭔지 알고 차이점을 알고 있어야 한다. <-- 가장 중요!!! 반드시 꼭 알고 있어야 함!!!
+Get이 뭔지 알고 있어야 한다!
+
+GET / POST 방식
+
+Request Parameter
+
+
+Query String, Query Parameter
+
+http://marondal.com/lesson/quiz_list?lessonId=10071&lectureId=10007&lectureListId=10084
+
+GET은 주소치고 들어가는 방식
+http://localhost/lesson01/ex03.html
+※ 앵커 태그는 무조건 GET 방식!! 

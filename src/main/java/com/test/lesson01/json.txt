@@ -1,0 +1,9 @@
+http://localhost/servlet/ex03?user_id=baekjs0123
+
+Query String, Query Parameter
+
+[{"키":"값"}] = json
+
+request -> 서버 -> response
+
+name에 있는게 쿼리스트링으로 넘어간다.
