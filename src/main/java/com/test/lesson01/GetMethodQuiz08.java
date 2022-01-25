@@ -33,8 +33,32 @@ public class GetMethodQuiz08 extends HttpServlet{
 		Iterator<String> iter = list.iterator();
 		while (iter.hasNext()) {
 			String line = iter.next();
-			line = line.replace(keyword, "<b>" + keyword + "</b>");
+//			line = line.replace(keyword, "<b>" + keyword + "</b>");
+//			if (line.contains(keyword)) {
+//				out.print(line + "<br>");
+//			}
+			
+			// 풀이1)
+//			int index = line.indexOf(keyword);
+//			if (index > -1) {
+//				StringBuffer sb = new StringBuffer();
+//				sb.append(line);
+//				sb.insert(index, "<b>"); // |맛집   <b> 태그 추가  =>  <b>맛집|
+//				sb.insert(index + keyword.length() + 3, "</b>"); // <b>맛집|</b>
+//				
+//				out.print(sb + "<br>");
+//				
+//			}
+			
+			// 풀이2)
+//			if (line.contains(keyword)) {
+//				String[] words = line.split(keyword);	// apple:orange 	
+//				out.print(words[0] + "<b>" + keyword + "</b>" + words[1] + "<br>");
+//			}
+			
+			// 풀이3)
 			if (line.contains(keyword)) {
+				line = line.replace(keyword, "<b>" + keyword + "</b>");
 				out.print(line + "<br>");
 			}
 		}
