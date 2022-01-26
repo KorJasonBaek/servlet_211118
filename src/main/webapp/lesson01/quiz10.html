@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>입사 지원</title>
+<title>사용자 정보 확인</title>
 <!-- bootstrap CDN link -->
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -12,17 +12,12 @@
 </head>
 <body>
 	<div class="container">
-		<h1>입사 지원</h1>
-		<form method="post" action="/servlet/quiz09">
-			<input type=text class="form-control col-4" name="name" placeholder="이름을 입력하세요."><br>
-			<div>
-				<label for="selfIntroduction">자기 소개서</label>
-				<textarea class="form-control" id="selfIntroduction" name="selfIntroduction" rows="10">			
-				</textarea>
-			</div>
-			
-			<button type="submit" class="btn btn-primary btn-block mt-3">지원</button>
-			
+		<h1>로그인</h1>
+		<form method=post action="/servlet/quiz10">
+		<input type="text" class="form-control col-3" name="userId" placeholder="아이디를 입력하세요">
+		<input type="password" class="form-control col-3 mt-1" name="password" placeholder="비밀번호를 입력하세요">
+		
+		<button type="submit" class="btn btn-primary mt-2">로그인</button>
 		</form>
 	</div>
 </body>
