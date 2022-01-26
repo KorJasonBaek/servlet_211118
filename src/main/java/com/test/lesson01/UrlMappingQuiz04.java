@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 @WebServlet("/servlet/quiz04")
 public class UrlMappingQuiz04 extends HttpServlet{
+	
+	// 이슈 테스트를 위한 주석 추가
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");
