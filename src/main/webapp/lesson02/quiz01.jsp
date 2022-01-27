@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,6 @@
 <h3>평균 점수는 <%= average %>입니다.</h3>
 
 <%-- 3. 채점 결과 --%>
-<%@ page import="java.util.*"%>
 <% 
 	List<String> scoreList = Arrays.asList(new String[]{"X", "O", "O", "O", "X", "O", "O", "O", "X", "O"});
 	sum = 0;
