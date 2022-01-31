@@ -17,7 +17,7 @@
 	<h2>메뉴 검색</h2>
 	<form method="post" action="/lesson02/quiz07_1.jsp">
 		<div class="d-flex align-items-center">
-			<input type="text" class="form-control col-3">
+			<input type="text" class="form-control col-3" name="menu">
 			<label><input type="checkbox" name="except" class="ml-1" value="underFourPoint"><span class="ml-1">4점 이하 제외</span></label>
 		</div>
 		
