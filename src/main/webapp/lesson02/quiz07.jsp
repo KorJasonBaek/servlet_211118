@@ -13,16 +13,19 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
-	<h2>메뉴 검색</h2>
-	<form method="post" action="/lesson02/quiz07_1.jsp">
-		<div class="d-flex align-items-center">
-			<input type="text" class="form-control col-3" name="menu">
-			<label><input type="checkbox" name="except" class="ml-1" value="underFourPoint"><span class="ml-1">4점 이하 제외</span></label>
-		</div>
-		
-		<input type="submit" class="btn btn-success mt-3" value="검색">
-	</form>
-</div>
+	<div class="container">
+		<h1>메뉴 검색</h1>
+		<form method="post" action="/lesson02/quiz07_1.jsp">
+			<div class="d-flex">
+				<input type="text" class="form-control col-3" name="menu">
+				<label class="ml-2 mt-2">
+					<input type="checkbox" name="except" value="underFourPoint">
+					4점 이하 제외
+				</label>
+			</div>
+			
+			<input type="submit" class="btn btn-success mt-3" value="검색">
+		</form>
+	</div>
 </body>
 </html>

@@ -1,43 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.Map"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.HashMap"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Map"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.HashMap"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>배탈의 민족</title>
 <!-- bootstrap CDN link -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
-<style>
-  table {
-    width: 100%;
-    border-top: 1px solid #999999;
-  }
-  th, td {
-  	width: 100%;
-  	text-align: center;
-    border-top: 1px solid #999999;
-    padding: 10px;
-  }
-</style>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </head>
 <body>
 	<%
@@ -57,16 +35,13 @@
     map = new HashMap<String, Object>() {{ put("name", "반올림피자"); put("menu", "피자"); put("point", 4.3); } };
     list.add(map);
 
-	String menu = request.getParameter("menu");
-	String except = request.getParameter("except");
+
 	%>
 	<div class="container">
-		<div class="d-flex justify-content-center">
-			<h2>검색 결과</h2>
-		</div>
-		<table>
+		<h1 class="text-center">검색 결과</h1>
+		<table class="table text-center">
 			<thead>
-				<tr  class="d-flex justify-content-around">
+				<tr>
 					<th>메뉴</th>
 					<th>상호</th>
 					<th>별점</th>
@@ -74,27 +49,24 @@
 			</thead>
 			<tbody>
 				<%
-				for (int i = 0; i < list.size(); i++) {
-					if (list.get(i).get("menu").equals(menu)) {
-						if ((except == null) == false && (double) list.get(i).get("point") >= 4.0) {
+					String menu = request.getParameter("menu");
+					String except = request.getParameter("except");
+					boolean exclude = except != null;		// 체크됨 => 4점 이하를 제외한다
+					
+					for (Map<String, Object> item : list) {
+						if (menu.equals((String)item.get("menu"))) {
+							if (exclude && (double)item.get("point") <= 4.0) {		// 체크가 되었고, 4점 이하 => 제외
+								continue;
+							}
 				%>
-				<tr  class="d-flex justify-content-around">
-					<td><%=list.get(i).get("menu")%></td>
-					<td><%=list.get(i).get("name")%></td>
-					<td><%=list.get(i).get("point")%></td>
-				</tr>
+					<tr>
+						<td><%= item.get("menu") %></td>
+						<td><%= item.get("name") %></td>
+						<td><%= item.get("point") %></td>
+					</tr>
 				<%
-						} else if (except == null) {
-				%>
-				<tr  class="d-flex justify-content-around">
-					<td><%=list.get(i).get("menu")%></td>
-					<td><%=list.get(i).get("name")%></td>
-					<td><%=list.get(i).get("point")%></td>
-				</tr>
-				<%	
 						}
 					}
-				}
 				%>
 
 			</tbody>
