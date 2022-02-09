@@ -82,11 +82,11 @@
 		<div class="d-flex">
 			<img src="<%= target.get("image") %>" alt="표지" width="300">
 			<div>
-				<div class="display-2 font-weight-bold"><%= target.get("title") %></div>
-				<div class="display-3 text-info"><%= target.get("author") %></div>
-				<div class="display-4 text-secondary"><%= target.get("publisher") %></div>
+				<div class="display-1 font-weight-bold d-block"><%= target.get("title") %></div>
+				<div class="display-3 text-info d-block"><%= target.get("author") %></div>
+				<div class="display-4 text-secondary d-block"><%= target.get("publisher") %></div>
 			</div>
-		</div>	
+		</div>	 
 		
 	</div>
 </body>
