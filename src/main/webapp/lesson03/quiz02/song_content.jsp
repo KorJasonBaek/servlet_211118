@@ -75,11 +75,12 @@
 	musicList.add(musicInfo);
 %>
 <%
-	int id = Integer.valueOf(request.getParameter("id"));
-		
+	// int id = Integer.valueOf(request.getParameter("id"));
+	String title = request.getParameter("title").trim();
+	
 	Map<String, Object> target = new HashMap<>();  // {}
 	for(Map<String, Object> music : musicList) {
-		if (id == (int)music.get("id")) {
+		if (title.equals((String)music.get("title"))) {
 			target = music;
 			break;
 		}
