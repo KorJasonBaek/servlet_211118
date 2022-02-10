@@ -75,14 +75,27 @@
 	musicList.add(musicInfo);
 %>
 <%
-	// int id = Integer.valueOf(request.getParameter("id"));
-	String title = request.getParameter("title").trim();
+	int id = 0;
+	String title = null;
 	
-	Map<String, Object> target = new HashMap<>();  // {}
+	if (request.getParameter("id") != null) {
+		id = Integer.valueOf(request.getParameter("id"));
+	} else {
+		title = request.getParameter("search").trim();
+	}
+	
+	Map<String, Object> target = new HashMap<>();
 	for(Map<String, Object> music : musicList) {
-		if (title.equals((String)music.get("title"))) {
-			target = music;
-			break;
+		if (title == null) {
+			if (id == ((int)music.get("id"))) {
+				target = music;
+				break;
+			}
+		} else {
+			if (title.equals((String)music.get("title"))) {
+				target = music;
+				break;
+			}
 		}
 	}
 %>

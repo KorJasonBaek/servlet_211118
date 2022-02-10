@@ -114,7 +114,7 @@
 		%>
 			<tr>
 				<td><%= music.get("id") %></td>
-				<td><a href="song_template.jsp?title=<%= music.get("title") %>"><%= music.get("title") %></a></td>
+				<td><a href="song_template.jsp?id=<%= music.get("id") %>"><%= music.get("title") %></a></td>
 				<td><%= music.get("album") %></td>
 			</tr>
 		<%
