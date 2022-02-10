@@ -1,11 +1,11 @@
-<%@page import="java.util.Map"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.Map"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%
+<%@ page import="java.util.Map"%>
+<%@ page import="java.util.HashMap"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Map"%>
+<%@ page import="java.util.List"%>
+<%
     List<Map<String, String>> list = new ArrayList<>();
     Map<String, String> map = new HashMap<String, String>() {{ put("ch", "5"); put("name", "SBS"); put("category", "지상파"); } };
     list.add(map);
@@ -54,29 +54,24 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%
+		<%
 			String category = request.getParameter("category");
-
+	
 			for (Map<String, String> item : list) {
-				if (item.get("category").equals(category)) {
-			%>
+				// 카테고리가 null이 아니고, 카테고리가 일치하지 않을 때 skip
+				if (category != null && item.get("category").equals(category) == false) {
+					continue;
+				}
+		%>
 			<tr>
 				<td><%=item.get("ch")%></td>
 				<td><%=item.get("name")%></td>
 				<td><%=item.get("category")%></td>
 			</tr>
-			<%
-			} else if (category == null) {
-			%>
-			<tr>
-				<td><%=item.get("ch")%></td>
-				<td><%=item.get("name")%></td>
-				<td><%=item.get("category")%></td>
-			</tr>
-			<%
+		<%
+				
 			}
-			}
-			%>
+		%>
 		</tbody>
 	</table>
 </section>
