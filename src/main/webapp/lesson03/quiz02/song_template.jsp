@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>멜롱 - 곡 정보</title>
+<title>멜롱 - 아이유</title>
 <!-- bootstrap CDN link -->
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -19,7 +19,7 @@
 		header .logo {width:150px;}
 		header .search {width:1050px;}
 		nav {height:40px;}
-		section {height:500px;}
+		/* section {height:500px;} */
 		footer {height:100px;}
 		.lyric {height:120px}
 		.menu-font {font-weight-bold; color:black}

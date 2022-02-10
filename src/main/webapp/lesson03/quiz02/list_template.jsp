@@ -19,7 +19,7 @@
 		header .logo {width:150px;}
 		header .search {width:1050px;}
 		nav {height:40px;}
-		section {height:500px;}
+		/* section {height:500px;} */
 		footer {height:100px;}
 		.menu-font {font-weight-bold; color:black;}
 	</style>

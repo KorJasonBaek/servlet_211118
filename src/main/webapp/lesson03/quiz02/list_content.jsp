@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.Map"%>
+<%@ page import="java.util.*"%>
 <%
 	//아티스트 정보 
 	
@@ -86,40 +83,44 @@
 
 %>
 <%-- 아티스트 정보 영역 --%>
-<div class="artist-Info d-flex mt-4 border border-success p-3">
-	<div class="singer-photo mr-4">
-		<img src="<%= artistInfo.get("photo") %>" alt="가수 이미지" width="150px">
+<section>
+	<div class="artist-Info d-flex mt-4 border border-success p-3">
+		<div class="singer-photo mr-4">
+			<img src="<%= artistInfo.get("photo") %>" alt="가수 이미지" width="150px">
+		</div>
+		<div class="singer-info">
+			<h3 class="font-weight-bold"><%= artistInfo.get("name") %></h3>
+			<div class="font-weight-bold"><%= artistInfo.get("agency") %></div>
+			<div class="font-weight-bold"><%= artistInfo.get("debute") %> 데뷔</div>
+		</div>
 	</div>
-	<div class="singer-info">
-		<h3 class="font-weight-bold"><%= artistInfo.get("name") %></h3>
-		<span class="font-weight-bold"><%= artistInfo.get("agency") %></span><br>
-		<span class="font-weight-bold"><%= artistInfo.get("debute") %> 데뷔</span>
+	
+	<%-- 곡 목록 영역 --%>
+	<div class="music-list mt-3">
+		<h3>곡 목록</h3>
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>제목</th>
+					<th>앨범</th>
+				</tr>
+			</thead>
+			<tbody>
+			<%
+				for (Map<String, Object> music : musicList) {
+			%>
+				<tr>
+					<td><%= music.get("id") %></td>
+					<td>
+						<a href="song_template.jsp?id=<%= music.get("id") %>"><%= music.get("title") %></a>
+					</td>
+					<td><%= music.get("album") %></td>
+				</tr>
+			<%
+				}
+			%>
+			</tbody>
+		</table>
 	</div>
-</div>
-
-<%-- 곡 목록 영역 --%>
-<div class="music-list mt-3">
-	<h3>곡 목록</h3>
-	<table class="table text-center">
-		<thead>
-			<tr>
-				<th>No.</th>
-				<th>제목</th>
-				<th>앨범</th>
-			</tr>
-		</thead>
-		<tbody>
-		<%
-			for (Map<String, Object> music : musicList) {
-		%>
-			<tr>
-				<td><%= music.get("id") %></td>
-				<td><a href="song_template.jsp?id=<%= music.get("id") %>"><%= music.get("title") %></a></td>
-				<td><%= music.get("album") %></td>
-			</tr>
-		<%
-			}
-		%>
-		</tbody>
-	</table>
-</div>
+</section>
