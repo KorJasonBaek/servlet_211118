@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Calendar"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +15,55 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-
+	<div class="container">
+	<%
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+		
+		int lastDate = calendar.getActualMaximum(Calendar.DATE) + 1;
+		int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+		int week = calendar.getActualMaximum(Calendar.WEEK_OF_MONTH);
+	%>
+		<h2 class="text-center"><%= sdf.format(calendar.getTime()) %></h2>
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th class="text-danger">일</th>
+					<th>월</th>
+					<th>화</th>
+					<th>수</th>
+					<th>목</th>
+					<th>금</th>
+					<th>토</th>
+				</tr>
+			</thead>
+			<tbody>
+			<%
+				int date = 1;
+				for (int i = 0; i < week; i++) {
+			%>
+				<tr>
+			<%
+					for (int j = 1; j <= 7; j++) {
+						if (i == 0 && j <= dayOfWeek) {
+			%>
+					<td> </td>
+			<%
+						} else if (date < lastDate) {
+			%>
+					<td class="display-4"><%= date %></td>
+			<%
+							date++;
+						}
+					}
+			%>
+				</tr>
+			<% 
+				}
+			%>
+		
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>
