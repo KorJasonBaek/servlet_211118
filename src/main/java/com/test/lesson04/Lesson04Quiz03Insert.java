@@ -15,7 +15,7 @@ public class Lesson04Quiz03Insert extends HttpServlet {
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		int id = Integer.valueOf(request.getParameter("id"));
+		int sellerId = Integer.valueOf(request.getParameter("sellerId"));
 		String title = request.getParameter("title");
 		int price = Integer.valueOf(request.getParameter("price"));
 		String description = request.getParameter("description");
@@ -25,7 +25,7 @@ public class Lesson04Quiz03Insert extends HttpServlet {
 		mysqlService.connection();
 		
 		String inserQuery = "insert into `used_goods` (`sellerId`, `title`, `description`, `price`, `pictureUrl`)"
-				+ "values('"+ id + "' ,'" + title + "' ,'" + description + "' ,'"
+				+ "values('"+ sellerId + "' ,'" + title + "' ,'" + description + "' ,'"
 				+ price + "' ,'" + pictureUrl + "')";
 		try {
 			mysqlService.update(inserQuery);

@@ -15,8 +15,9 @@ ResultSet result = mysqlService.select(selectQuery);
 		<div class="display-4 m-5">물건 올리기</div>
 		<form method="post" action="/lesson04/quiz03_insert" name="uploadForm">
 			<div class="d-flex">
-				<select id="id" name="id" class="form-control col-3 ml-5">
-					<option value="">-아이디 선택-</option>
+				<select id="sellerId" name="sellerId"
+					class="form-control col-3 ml-5">
+					<option selected>-아이디 선택-</option>
 					<%
 					while (result.next()) {
 					%>
@@ -40,34 +41,53 @@ ResultSet result = mysqlService.select(selectQuery);
 				<div class="input-group-prepend">
 					<span class="input-group-text">이미지 url</span>
 				</div>
-				<input type="text" class="form-control" name="pictureUrl">
+				<input type="text" id="picture" class="form-control" name="pictureUrl">
 			</div>
-			<input type="submit" class="submit-btn btn btn-light w-100"
-				onclick="return checkform()" value="저장">
+			<input type="submit" id="uploadBtn" class="btn btn-light w-100"
+				value="저장">
 		</form>
 	</div>
 </section>
 <script type="text/javascript">
-	function checkform() {
-		if (document.uploadForm.id.value == "") {
-			alert("id를 선택하세요");
-			$("#id").focus();
-			return false;
-		}
+	$(document).ready(function() {
+		$('#uploadBtn').on('click', function(e) {
+			e.preventDefault();
 
-		if (document.uploadForm.title.value == '') {
-			alert("제목을 입력하세요");
-			$('#title').focus();
-			return false;
-		}
+			let sellerId = $('#sellerId option:selected').val();
+			let title = $('#title').val();
+			let price = $('#price').val();
+			let description = $('#description').val();
+			//let url = $('#picture').val();
 
-		if (document.uploadForm.price.value == '') {
-			alert("가격을 입력하세요");
-			$('#price').focus();
-			return false;
-		}
-		document.uploadForm.submit();
-	}
+			if (sellerId == '-아이디 선택-') {
+				alert("아이디를 선택해주세요.");
+				return;
+			}
+			if (title == '') {
+				alert("제목을 입력하세요.");
+				return;
+			}
+			if (price == '') {
+				alert("가격을 입력하세요.");
+				return;
+			}
+			if (description == '') {
+				alert("내용을 작성하세요");
+				return;
+			}
+			/* if (url.endsWith(".jpg") == false) {
+				alert("이미지의 주소가 잘못 되었습니다.");
+				return;
+			} */
+
+		});
+
+		// 정규식을 사용하여 숫자만 입력받게 하기
+		$('#price').on('keyup', function(e) {
+			$(this).val($(this).val().replace(/[^0-9]/gi, ""));
+		});
+
+	});
 </script>
 <%
 //DB 해제
