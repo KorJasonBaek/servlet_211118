@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.test.common.MysqlService"%>
+<%@ page import="com.test.common.MysqlService"%>
 <%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>즐겨찾기</title>
+<title>즐겨찾기 목록</title>
 <!-- bootstrap CDN link -->
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -20,16 +20,17 @@
 	MysqlService mysql = MysqlService.getInstance();
 	mysql.connection();
 	
-	String selectQuery = "select * from `bookmark`";
+	String selectQuery = "select * from `bookmark` order by `id` desc";
 	ResultSet result = mysql.select(selectQuery);
 %>
 	<div class="container">
+		<h1>즐겨찾기 목록</h1>
 		<table class="table text-center">
 			<thead>
 				<tr>
 					<th>사이트</th>
 					<th>사이트 주소</th>
-					<th>삭제하기</th>
+					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,8 +39,8 @@
 			%>
 				<tr>
 					<td><%= result.getString("name") %></td>
-					<td><a href="<%= result.getString("url") %>"><%= result.getString("url") %></a></td>
-					<td><a href="/lesson04/bookmark_delete?id=<%= result.getString("id")%>">삭제하기</a></td>
+					<td><a href="<%= result.getString("url") %>" target="_blank"><%= result.getString("url") %></a></td>
+					<td><a href="/lesson04/quiz02_delete?id=<%= result.getInt("id")%>" class="btn btn-danger">삭제하기</a></td>
 				</tr>
 			<%
 				}
@@ -47,5 +48,9 @@
 			</tbody>
 		</table>
 	</div>
+<%
+	// DB 연결 해제
+	mysql.disconnection();
+%>
 </body>
 </html>

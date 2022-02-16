@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.test.common.MysqlService;
 
-@WebServlet("/lesson04/bookmark_delete")
+@WebServlet("/lesson04/quiz02_delete")
 public class Lesson04Quiz02Delete extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// request parameter => id
+		// request parameter => id 꺼낸다.
 		int id = Integer.valueOf(request.getParameter("id"));
 
 		// DB 연결
